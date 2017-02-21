@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+					http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>com.olegdev</groupId>
+  <artifactId>hibernate-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  
+  <modules>
+  	<module>project2</module>
+  	<module>project3</module>
+  </modules>
+  
+  <properties>
+  	<JRE.version>1.8</JRE.version>
+  	<maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+  	<testng.version>6.10</testng.version>
+  	<hibernate-core.version>5.2.7.Final</hibernate-core.version>
+  	<hsqldb.version>2.3.4</hsqldb.version>
+  </properties>
+  
+  <dependencies>  
+    <dependency>
+  		<groupId>org.testng</groupId>
+  		<artifactId>testng</artifactId> 
+  		<version>${testng.version}</version> 		
+  	</dependency>  	
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-core</artifactId>
+  		<version>${hibernate-core.version}</version>
+  	</dependency>  	
+  	<dependency>
+  		<groupId>org.hsqldb</groupId>
+  		<artifactId>hsqldb</artifactId>
+  		<version>${hsqldb.version}</version>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>${maven-compiler-plugin.version}</version>
+  			<configuration>
+  				<source>${JRE.version}</source>
+  				<target>${JRE.version}</target>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+
+</project>
+
+<!-- <properties>
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+<dependencies>
+<dependency>
+<groupId>org.testng</groupId>
+<artifactId>testng</artifactId>
+<version>[6.0.12,)</version>
+<scope>test</scope>
+</dependency>
+<dependency>
+<groupId>org.hibernate</groupId>
+<artifactId>hibernate-core</artifactId>
+<version>[4.2.6,4.2.9]</version>
+</dependency>
+<dependency>
+<groupId>org.hsqldb</groupId>
+<artifactId>hsqldb</artifactId>
+<version>[2.2.9,)</version>
+</dependency>
+</dependencies>
+<build>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<version>2.3.2</version>
+<configuration>
+<source>1.7</source>
+<target>1.7</target>
+<showDeprecation>true</showDeprecation>
+<showWarnings>true</showWarnings>
+</configuration>
+</plugin>
+</plugins>
+</build>
+</project> -->
