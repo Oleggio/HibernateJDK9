@@ -21,7 +21,7 @@ public class HibernateRankingService implements RankingService {
 
     private int getRankingFor(Session session, String subject, String skill) {
         Query<Ranking> query = session.createQuery(
-                "from Ranking r" +
+                "from Ranking r " +
                         "where r.subject.name=:name " +
                           "and r.skill.name=:skill");
         query.setParameter("name", subject);
@@ -60,7 +60,7 @@ public class HibernateRankingService implements RankingService {
 
     private Person findPerson(Session session, String name) {
         Query<Person> query = session.createQuery(
-                "from Person p" +
+                "from Person p " +
                    "where p.name=:name");
         query.setParameter("name", name);
         return query.uniqueResult();
@@ -88,7 +88,7 @@ public class HibernateRankingService implements RankingService {
 
     private Skill getSkill(Session session, String name) {
         Query<Skill> query = session.createQuery(
-                "from Skill s" +
+                "from Skill s " +
                         "where s.name = :name");
         query.setParameter("name", name);
         return query.uniqueResult();

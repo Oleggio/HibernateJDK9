@@ -9,4 +9,11 @@
 
   <artifactId>project3</artifactId>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.olegdev</groupId>
+      <artifactId>util</artifactId>
+    </dependency>
+  </dependencies>
+
 </project>
