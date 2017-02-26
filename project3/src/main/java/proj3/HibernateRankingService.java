@@ -4,7 +4,6 @@ import com.olegdev.util.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.hibernate.stat.internal.SessionStatisticsImpl;
 
 import java.util.IntSummaryStatistics;
 import java.util.stream.Collectors;
