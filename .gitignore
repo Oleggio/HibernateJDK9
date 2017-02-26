@@ -18,7 +18,8 @@ local.properties
 */target/*
 
 # Idea Specific
-.idea
+*.idea
+*.iml
 
 # H2 Specific
 *.mv.db
