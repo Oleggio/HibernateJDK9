@@ -6,7 +6,10 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.testng.Assert;
 
+import java.util.HashMap;
 import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class HibernateRankingService implements RankingService {
@@ -87,6 +90,39 @@ public class HibernateRankingService implements RankingService {
     }
 
     @Override
+    public Map<String, Integer> findRankingsFor(String subject) {
+        Map<String, Integer> results;
+        Session session = SessionUtil.getSession();
+        Transaction tx = session.beginTransaction();
+        results=findRankingsFor(session, subject);
+        tx.commit();
+        session.close();
+        return results;
+    }
+
+    private Map<String, Integer> findRankingsFor(Session session, String subject) {
+        Map<String, Integer> results=new HashMap<>();
+        Query query = session.createQuery("from Ranking r where "
+                + "r.subject.name=:subject order by r.skill.name");
+        query.setParameter("subject", subject);
+        List<Ranking> rankings=query.list();
+        String lastSkillName="";
+        int sum=0;
+        int count=0;
+        for(Ranking r:rankings) {
+            if(!lastSkillName.equals(r.getSkill().getName())) {
+                sum=0;
+                count=0;
+                lastSkillName=r.getSkill().getName();
+            }
+            sum+=r.getRanking();
+            count++;
+            results.put(lastSkillName, sum/count);
+        }
+        return results;
+    }
+
+    @Override
     public void addRanking(String subjectName, String observerName,
                            String skillName, int rank) {
         try (Session session = SessionUtil.getSession()) {
@@ -141,6 +177,5 @@ public class HibernateRankingService implements RankingService {
         Assert.assertNotNull(ranking, "Ranking not found!");
         session.delete(ranking);
     }
-
 
 }

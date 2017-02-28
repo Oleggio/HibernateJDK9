@@ -1,5 +1,7 @@
 package proj3;
 
+import java.util.Map;
+
 public interface RankingService {
     int getRankingFor(String subject, String skill);
 
@@ -8,4 +10,6 @@ public interface RankingService {
     void updateRanking(String subject, String observer, String skill, int ranking);
 
     void removeRanking(String subject, String observer, String skill);
+
+    Map<String,Integer> findRankingsFor(String subject);
 }
