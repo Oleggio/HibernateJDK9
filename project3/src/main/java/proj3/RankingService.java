@@ -12,4 +12,6 @@ public interface RankingService {
     void removeRanking(String subject, String observer, String skill);
 
     Map<String,Integer> findRankingsFor(String subject);
+
+    Person findBestPersonFor(String skill);
 }
